@@ -1,15 +1,15 @@
 {
+  "homepage": "https://pvd0713.github.io/marketVue",
   "name": "my-vue-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://pvd0713.github.io/marketVue",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "predeploy": "npm run build", 
-    "deploy": "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "vue": "^3.4.37"
