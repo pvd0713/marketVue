@@ -1,7 +1,41 @@
 <script setup>
 import Menu from "./Menu.vue";
 import Content from "./Content.vue";
+import { ref } from "vue";
 
+const view = ref(["product","information"]);
+
+const changeProductView = () => {
+  if (view.value.indexOf("product") !== -1) {
+    view.value = view.value.filter((item) => item !== "product");
+  } else {
+    view.value.push("product");
+  }
+};
+
+const changeSallersView = () => {
+  if (view.value.indexOf("sallers") !== -1) {
+    view.value = view.value.filter((item) => item !== "sallers");
+  } else {
+    view.value.push("sallers");
+  }
+};
+
+const changeInformationView = () => {
+  if (view.value.indexOf("information") !== -1) {
+    view.value = view.value.filter((item) => item !== "information");
+  } else {
+    view.value.push("information");
+  }
+};
+
+const changeExpertsView = () => {
+  if (view.value.indexOf("experts") !== -1) {
+    view.value = view.value.filter((item) => item !== "experts");
+  } else {
+    view.value.push("experts");
+  }
+};
 </script>
 
 <template>
@@ -49,13 +83,46 @@ import Content from "./Content.vue";
       </div>
       <button href="#" class="header__enter">Вход</button>
     </div>
+    
     <div class="choose">
       <p class="choose__title">Видимость</p>
       <div class="choose__items">
-        <button class="choose__items_button">Товар</button>
-        <button class="choose__items_button">Продавцы</button>
-        <button class="choose__items_button">Информация</button>
-        <button class="choose__items_button">Эксперты</button>
+        <button
+          @click="changeProductView"
+          class="choose__items_button"
+          :class="{
+            choose__items_button_noactive: view.indexOf('product') === -1,
+          }"
+        >
+          Товар
+        </button>
+        <button
+          @click="changeSallersView"
+          class="choose__items_button"
+          :class="{
+            choose__items_button_noactive: view.indexOf('sallers') === -1,
+          }"
+        >
+          Продавцы
+        </button>
+        <button
+          @click="changeInformationView"
+          class="choose__items_button"
+          :class="{
+            choose__items_button_noactive: view.indexOf('information') === -1,
+          }"
+        >
+          Информация
+        </button>
+        <button
+          @click="changeExpertsView"
+          class="choose__items_button"
+          :class="{
+            choose__items_button_noactive: view.indexOf('experts') === -1,
+          }"
+        >
+          Эксперты
+        </button>
       </div>
     </div>
   </header>
@@ -64,7 +131,7 @@ import Content from "./Content.vue";
       <Menu />
     </div>
     <div class="content">
-      <Content />
+      <Content :view="view" />
     </div>
   </main>
 </template>
@@ -176,6 +243,10 @@ import Content from "./Content.vue";
       border: 1px solid #dedede;
       border-radius: 6px;
     }
+
+    &_button_noactive {
+      background: #fff;
+    }
   }
 }
 
@@ -193,6 +264,7 @@ import Content from "./Content.vue";
   border: 1px solid #dedede;
   border-radius: 8px;
   padding: 5px;
+  min-width: 160px;
 }
 
 .content {

@@ -1,45 +1,3 @@
-<template>
-  <p class="title">Категория</p>
-  <div class="category-menu">
-    <ul v-if="!selectedCategory">
-      <li v-for="category in categories" :key="category.id">
-        <div @click="selectCategory(category)">
-          {{ category.name }}
-        </div>
-      </li>
-    </ul>
-    
-    <!-- Подкатегории выбранной категории -->
-    <ul v-else>
-      <li
-        v-for="subcategory in selectedCategory.subcategories"
-        :key="subcategory.id"
-      >
-        <div @click="selectSubcategory(subcategory)">
-          {{ subcategory.name }}
-        </div>
-
-        <!-- Вложенные подкатегории -->
-        <ul v-if="subcategory.open">
-          <li
-            v-for="subSubcategory in subcategory.subcategories"
-            :key="subSubcategory.id"
-          >
-            <div @click="selectSubSubcategory(subSubcategory)">
-              {{ subSubcategory.name }}
-            </div>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Кнопка для возврата к категориям верхнего уровня -->
-      <li>
-        <button @click="clearSelection">Назад к категориям</button>
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script setup>
 import { ref } from "vue";
 
@@ -101,6 +59,48 @@ const clearSelection = () => {
   selectedCategory.value = null;
 };
 </script>
+
+<template>
+  <p class="title">Категория</p>
+  <div class="category-menu">
+    <ul v-if="!selectedCategory">
+      <li v-for="category in categories" :key="category.id">
+        <div @click="selectCategory(category)">
+          {{ category.name }}
+        </div>
+      </li>
+    </ul>
+
+    <!-- Подкатегории выбранной категории -->
+    <ul v-else>
+      <li
+        v-for="subcategory in selectedCategory.subcategories"
+        :key="subcategory.id"
+      >
+        <div @click="selectSubcategory(subcategory)">
+          {{ subcategory.name }}
+        </div>
+
+        <!-- Вложенные подкатегории -->
+        <ul v-if="subcategory.open">
+          <li
+            v-for="subSubcategory in subcategory.subcategories"
+            :key="subSubcategory.id"
+          >
+            <div @click="selectSubSubcategory(subSubcategory)">
+              {{ subSubcategory.name }}
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Кнопка для возврата к категориям верхнего уровня -->
+      <li>
+        <button @click="clearSelection">Назад к категориям</button>
+      </li>
+    </ul>
+  </div>
+</template>
 
 <style scoped>
 .title {

@@ -86,9 +86,9 @@ const nextImage = () => {
     </div>
 
     <!-- Слайдер миниатюр -->
-    <div class="thumbnail-slider">
+    <!-- <div class="thumbnail-slider">
       <img
-        class="slider-btn"
+        class="slider-btn left"
         @click="previousImage"
         src="../assets/img/ArrowLeft.svg"
         alt="img"
@@ -105,19 +105,19 @@ const nextImage = () => {
         />
       </div>
       <img
-        class="slider-btn"
+        class="slider-btn right"
         @click="nextImage"
         src="../assets/img/ArrowRight.svg"
         alt="img"
       />
-      <!-- <button class="slider-btn" @click="nextImage">&#x25B6;</button> -->
-    </div>
+    </div> -->
 
     <!-- Таблица характеристик -->
     <h3>Характеристики</h3>
     <div class="specs">
       <div class="spec" v-for="(spec, index) in product.specs" :key="index">
         <div class="param">{{ spec.param }}</div>
+        <div class="dotts"></div>
         <div class="value">{{ spec.value }}</div>
       </div>
     </div>
@@ -126,11 +126,13 @@ const nextImage = () => {
 
 <style scoped lang="scss">
 .product-card {
-  max-width: 960px;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 562px;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #F5F5F5;
-  border: 1px solid #DEDEDE;
+  background-color: #f5f5f5;
+  border: 1px solid #dedede;
   border-radius: 8px;
   margin-bottom: 50px;
 }
@@ -142,7 +144,6 @@ const nextImage = () => {
   margin-bottom: 20px;
 
   &__title {
-    
     font-family: "Roboto", sans-serif;
     font-size: 30px;
     font-weight: 700;
@@ -151,8 +152,6 @@ const nextImage = () => {
   }
 }
 
-
-
 /* Главное изображение */
 .main-image-container {
   position: relative;
@@ -160,7 +159,7 @@ const nextImage = () => {
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
-  width: 100%;
+  // width: 100%;
 }
 
 .main-image {
@@ -192,27 +191,31 @@ const nextImage = () => {
 
 /* Слайдер миниатюр */
 .thumbnail-slider {
-  width: auto;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .thumbnails {
+  width: 100%;
   display: flex;
-  overflow-x: auto;
-  max-width: 80%;
+  flex-wrap: nowrap;
+  // overflow-x: auto ;
 }
 
-.thumbnails::-webkit-scrollbar {
+.thumbnail-slider::-webkit-scrollbar {
   height: 8px;
 }
-.thumbnails::-webkit-scrollbar-thumb {
+.thumbnail-slider::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 4px;
 }
-.thumbnails::-webkit-scrollbar-track {
+.thumbnail-slider::-webkit-scrollbar-track {
   background-color: #f5f5f5;
 }
 
@@ -237,6 +240,15 @@ const nextImage = () => {
   font-size: 24px;
   cursor: pointer;
   padding: 0 10px;
+  position: absolute;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
 }
 
 /* Таблица характеристик */
@@ -256,8 +268,18 @@ const nextImage = () => {
 }
 
 .param {
-  color: #555;
+  color: #999;
   font-style: italic;
+}
+
+.dotts {
+  width: auto;
+  flex-grow: 1;
+  // border-bottom: 1.5px dotted #999;
+  background-image: linear-gradient(to right, #999 33%, rgba(255,255,255,0) 0%);
+background-position: bottom;
+background-size: 5px 1.5px;
+background-repeat: repeat-x;
 }
 
 .value {

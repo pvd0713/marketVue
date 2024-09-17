@@ -12,7 +12,7 @@ const articles = ref([
       "https://avatars.mds.yandex.net/i?id=cfba15d1df37615f4a29f455d33fafa8e24856f5-9839669-images-thumbs&n=13",
     title: "Телефон Самсунг 0101 - новинка среди смартфонов",
     description:
-      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
+      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
     img: "https://avatars.mds.yandex.net/i?id=c771747cd2bc9fdb746e8b10cf27162161c84e8aba114fe9-12267805-images-thumbs&n=13",
     likes: 157,
     dislikes: 5,
@@ -27,7 +27,7 @@ const articles = ref([
       "https://avatars.mds.yandex.net/i?id=cfba15d1df37615f4a29f455d33fafa8e24856f5-9839669-images-thumbs&n=13",
     title: "Телефон Самсунг 0101 - новинка среди смартфонов",
     description:
-      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
+      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
     img: "https://avatars.mds.yandex.net/i?id=c771747cd2bc9fdb746e8b10cf27162161c84e8aba114fe9-12267805-images-thumbs&n=13",
     likes: 157,
     dislikes: 5,
@@ -42,7 +42,7 @@ const articles = ref([
       "https://avatars.mds.yandex.net/i?id=cfba15d1df37615f4a29f455d33fafa8e24856f5-9839669-images-thumbs&n=13",
     title: "Телефон Самсунг 0101 - новинка среди смартфонов",
     description:
-      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
+      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
     img: "https://avatars.mds.yandex.net/i?id=c771747cd2bc9fdb746e8b10cf27162161c84e8aba114fe9-12267805-images-thumbs&n=13",
     likes: 120,
     dislikes: 10,
@@ -57,7 +57,7 @@ const articles = ref([
       "https://avatars.mds.yandex.net/i?id=cfba15d1df37615f4a29f455d33fafa8e24856f5-9839669-images-thumbs&n=13",
     title: "Телефон Самсунг 0101 - новинка среди смартфонов",
     description:
-      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
+      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
     img: "https://avatars.mds.yandex.net/i?id=c771747cd2bc9fdb746e8b10cf27162161c84e8aba114fe9-12267805-images-thumbs&n=13",
     likes: 180,
     dislikes: 7,
@@ -72,7 +72,7 @@ const articles = ref([
       "https://avatars.mds.yandex.net/i?id=cfba15d1df37615f4a29f455d33fafa8e24856f5-9839669-images-thumbs&n=13",
     title: "Телефон Самсунг 0101 - новинка среди смартфонов",
     description:
-      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
+      "Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст. Начало статьи, главная мысль, цитата, статистика, мнение автора, вывод по статье, любой текст.",
     img: "https://avatars.mds.yandex.net/i?id=c771747cd2bc9fdb746e8b10cf27162161c84e8aba114fe9-12267805-images-thumbs&n=13",
     likes: 110,
     dislikes: 8,
@@ -254,11 +254,7 @@ const sortedFilteredArticles = computed(() => {
 
     <!-- Articles Display -->
     <div class="informations__articles">
-      <div
-        v-for="article in sortedFilteredArticles"
-        :key="article.id"
-        class="article-block"
-      >
+      <div v-for="article in sortedFilteredArticles" :key="article.id">
         <Article :article="article" />
       </div>
     </div>
@@ -344,15 +340,17 @@ const sortedFilteredArticles = computed(() => {
 
 <style scoped lang="scss">
 .informations {
+  box-sizing: border-box;
   position: relative;
   max-width: 100%;
   border-top: 1px solid #dedede;
   padding-top: 100px;
 
   &__articles {
-    display: flex;
-    max-width: 960px;
-    flex-wrap: wrap;
+    display: grid; /* 1 */
+    grid-template-columns: repeat(auto-fill, 460px); /* 2 */
+    justify-content: center;
+    max-width: 100%;
     row-gap: 20px;
     column-gap: 40px;
   }
@@ -382,16 +380,6 @@ const sortedFilteredArticles = computed(() => {
     color: #999999;
     padding-top: 4px;
   }
-}
-
-.article-block {
-  border: 1px solid #ccc;
-  width: 460px;
-  height: 522px;
-  border: 1px solid #dedede;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
 }
 
 .icons {
