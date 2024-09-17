@@ -343,8 +343,6 @@ const sortedFilteredArticles = computed(() => {
   box-sizing: border-box;
   position: relative;
   max-width: 100%;
-  border-top: 1px solid #dedede;
-  padding-top: 100px;
 
   &__articles {
     display: grid; /* 1 */

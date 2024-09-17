@@ -226,6 +226,7 @@ const sellers = [
     column-gap: 40px;
     max-height: 1200px;
     overflow-y: auto;
+    justify-content: space-evenly;
   }
 }
 
