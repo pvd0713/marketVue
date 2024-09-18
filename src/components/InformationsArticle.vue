@@ -205,7 +205,8 @@ const toggleText = () => {
 <style scoped lang="scss">
 .article-block {
   border: 1px solid #ccc;
-  width: 460px;
+  min-width: 460px;
+  max-width: 100%;
   border: 1px solid #dedede;
   border-radius: 8px;
   display: flex;

@@ -1,145 +1,165 @@
+#
 <script setup>
-import Article from "./SallersArticle.vue";
-const sellers = [
+import Article from "./ExpertsArticle.vue";
+const experts = [
   {
     id: 1,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
+    name: "Иванов Иван",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: false,
     comunication: true,
-    price: "55299",
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
   {
     id: 2,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
-    comunication: true,
-    price: "55299",
+    name: "Иванов Иван ",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: true,
+    comunication: false,
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
   {
     id: 3,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
+    name: "Иванов Иван ",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: true,
     comunication: true,
-    price: "55299",
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
   {
     id: 4,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
+    name: "Иванов Иван ",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: true,
     comunication: true,
-    price: "55299",
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
   {
     id: 5,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
+    name: "Иванов Иван ",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: true,
     comunication: true,
-    price: "55299",
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
-
   {
     id: 6,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
+    name: "Иванов Иван ",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: true,
     comunication: true,
-    price: "55299",
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
   {
     id: 7,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
+    name: "Иванов Иван ",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: true,
     comunication: true,
-    price: "55299",
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
   {
     id: 8,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
+    name: "Иванов Иван ",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: true,
     comunication: true,
-    price: "55299",
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
   {
     id: 9,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
+    name: "Иванов Иван ",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: true,
     comunication: true,
-    price: "55299",
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
   {
     id: 10,
-    name: "Ozon",
-    img: "https://avatars.mds.yandex.net/i?id=9cfbb0d0bf1fa163ece78b53ad77ba26_l-9220617-images-thumbs&n=13",
+    name: "Иванов Иван ",
+    img: "https://avatars.mds.yandex.net/i?id=f575fc2c950d00ba8f450bc8a3a532bb_l-5231754-images-thumbs&n=13",
+    online: true,
     comunication: true,
-    price: "55299",
+    price: "5000",
     rang_main: "4.6",
-    rang_secondary: "4.9",
-    count_sales: "1253",
-    count_sales_product: "1357",
-    delivery_date: "30 июля",
-    last_sale: "24 июля 2024 г. 20:23",
+    rang_secondary: "5.0",
+    count_public: "15",
+    count_public_common: "69",
+    count_consult: "52",
+    count_consult_common: "365",
+    last_consult: "24 июля 2024 г. 20:23",
   },
 ];
 </script>
 
 <template>
-  <div class="sellers">
+  <div class="experts">
     <div class="header">
-      <p class="header__title">Продавцы</p>
-      <p class="header__count">({{ sellers.length }})</p>
+      <p class="header__title">Эксперты</p>
+      <p class="header__count">({{ experts.length }})</p>
 
       <div class="icons">
         <div class="header__sort" @click="toggleSorting">
@@ -205,8 +225,8 @@ const sellers = [
       </div>
     </div>
 
-    <div class="sellers__articles">
-      <div v-for="article in sellers" :key="article.id" class="article-block">
+    <div class="experts__articles">
+      <div v-for="article in experts" :key="article.id" class="article-block">
         <Article :article="article" />
       </div>
     </div>
@@ -214,31 +234,31 @@ const sellers = [
 </template>
 
 <style scoped lang="scss">
-.sellers {
+.experts {
   position: relative;
   max-width: 100%;
   border-bottom: 1px solid #dedede;
-  margin-bottom: 50px;
+//   margin-bottom: 100px;
 
   &__articles {
     display: flex;
     flex-wrap: wrap;
     row-gap: 20px;
     column-gap: 40px;
-    max-height: 1200px;
+    // max-height: 1200px;
     overflow-y: auto;
     justify-content: space-evenly;
   }
 }
 
-.sellers__articles::-webkit-scrollbar {
+.experts__articles::-webkit-scrollbar {
   width: 10px;
 }
-.sellers__articles::-webkit-scrollbar-thumb {
+.experts__articles::-webkit-scrollbar-thumb {
   background-color: #aaa;
   border-radius: 4px;
 }
-.sellers__articles::-webkit-scrollbar-track {
+.experts__articles::-webkit-scrollbar-track {
   background-color: #f5f5f5;
 }
 

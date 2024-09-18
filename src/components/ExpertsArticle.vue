@@ -5,46 +5,71 @@ defineProps({
 </script>
 
 <template>
-  <div class="seller">
+  <div class="expert">
     <div class="header">
       <div class="header__avatar">
         <img class="header__avatar__img" :src="article.img" alt="img" />
       </div>
-      <div class="header__name">{{ article.name }}</div>
+      <div class="header__nameOnline">
+        <div class="header__name">{{ article.name }}</div>
+        <p
+          class="header__online"
+          :class="{ header__online_off: !article.online }"
+        >
+          {{ article.online ? "On-line" : "" }}
+        </p>
+      </div>
+
       <div class="header__price">
-        <p class="header__price__price">{{ article.price }} руб.</p>
-        <p class="header__price__comunication">
-          {{
-            article.comunication
-              ? "Готов к коммуникации"
-              : "Не готов к коммуникации"
-          }}
+        <div class="header__priceIcon">
+          <p class="header__price__price">{{ article.price }} руб.</p>
+          <svg
+            width="24"
+            height="25"
+            viewBox="0 0 24 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.75 21.25C17.5974 21.247 17.4487 21.202 17.32 21.12L12 17.41L6.68 21.12C6.56249 21.1915 6.42757 21.2294 6.29 21.2294C6.15243 21.2294 6.01751 21.1915 5.9 21.12C5.78491 21.0607 5.68741 20.9722 5.61722 20.8634C5.54703 20.7546 5.50661 20.6293 5.5 20.5V6.5C5.5 5.77065 5.78973 5.07118 6.30546 4.55546C6.82118 4.03973 7.52065 3.75 8.25 3.75H15.75C16.4793 3.75 17.1788 4.03973 17.6945 4.55546C18.2103 5.07118 18.5 5.77065 18.5 6.5V20.5C18.5005 20.6362 18.4634 20.7698 18.3929 20.8863C18.3223 21.0027 18.2209 21.0974 18.1 21.16C17.9927 21.2189 17.8724 21.2498 17.75 21.25ZM12 15.75C12.1532 15.7484 12.3033 15.7938 12.43 15.88L17 19.06V6.5C17 6.16848 16.8683 5.85054 16.6339 5.61612C16.3995 5.3817 16.0815 5.25 15.75 5.25H8.25C7.91848 5.25 7.60054 5.3817 7.36612 5.61612C7.1317 5.85054 7 6.16848 7 6.5V19.06L11.57 15.88C11.6967 15.7938 11.8468 15.7484 12 15.75Z"
+              fill="black"
+            />
+          </svg>
+        </div>
+
+        <p
+          class="header__price__comunication"
+          :class="{ header__price__comunication_off: !article.comunication }"
+        >
+          {{ article.comunication ? "Готов к коммуникации" : "" }}
         </p>
       </div>
     </div>
     <div class="content">
       <div class="content__item">
-        <p class="content__item__name">Рейтинг</p>
+        <p class="content__item__name">Рейтинг (Эксперт)</p>
         <p class="content__item__meaning">
           {{ article.rang_main }} / {{ article.rang_secondary }}
         </p>
       </div>
       <div class="content__item">
-        <p class="content__item__name">Количество продаж</p>
+        <p class="content__item__name">Количество публикаций</p>
         <p class="content__item__meaning">
-          {{ article.count_sales }} / {{ article.count_sales_product }}
+          {{ article.count_public }} / {{ article.count_public_common }}
         </p>
       </div>
       <div class="content__item">
-        <p class="content__item__name">Срок доставки</p>
-        <p class="content__item__meaning">{{ article.delivery_date }}</p>
+        <p class="content__item__name">Количество консультаций</p>
+        <p class="content__item__meaning">
+          {{ article.count_consult }} / {{ article.count_consult_common }}
+        </p>
       </div>
       <div class="content__item">
         <p class="content__item__name content__item__name_last">
-          Последняя продажа
+          Последняя консультация
         </p>
         <p class="content__item__meaning content__item__meaning_last">
-          {{ article.last_sale }}
+          {{ article.last_consult }}
         </p>
       </div>
     </div>
@@ -80,7 +105,9 @@ defineProps({
         </svg>
       </button>
       <button class="buttons__button">
-        <p class="buttons__button__tooltip buttons__button__tooltip_last">Перейти на страницу</p>
+        <p class="buttons__button__tooltip buttons__button__tooltip_last">
+          Перейти на страницу
+        </p>
         <svg
           width="25"
           height="24"
@@ -98,13 +125,43 @@ defineProps({
           />
         </svg>
       </button>
+      <svg
+        width="25"
+        height="25"
+        viewBox="0 0 25 25"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.4285 2C18.1093 2 22.7143 6.605 22.7143 12.2857C22.7143 17.9664 18.1093 22.5714 12.4285 22.5714C6.74782 22.5714 2.14282 17.9664 2.14282 12.2857C2.14282 6.605 6.74782 2 12.4285 2ZM12.4285 3.71429C7.69454 3.71429 3.85711 7.55171 3.85711 12.2857C3.85711 17.0197 7.69454 20.8571 12.4285 20.8571C17.1625 20.8571 21 17.0197 21 12.2857C21 7.55171 17.1625 3.71429 12.4285 3.71429ZM13.0843 7.51014C14.9584 7.51014 16.1785 8.80529 16.1785 10.5573C16.1785 12.3016 14.9314 13.583 13.0363 13.583H11.2367V14.9056H13.9701V15.6757H11.2367V17.1616H9.73068V15.6757H8.38711V14.9056H9.73025V13.5834H8.38711V12.8064H9.73025V7.51014H13.0843ZM12.6685 8.78471H11.2371V12.3564H12.6613C13.9838 12.3564 14.6447 11.6613 14.6447 10.5637C14.6447 9.47343 13.9838 8.78514 12.6681 8.78514"
+          fill="black"
+        />
+      </svg>
     </div>
-    <button class="buttonMain">Купить у продавца</button>
+    <button class="buttonMain">
+      <p>Записаться</p>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M17 4.75H15.75V3.5C15.75 3.30109 15.671 3.11032 15.5303 2.96967C15.3897 2.82902 15.1989 2.75 15 2.75C14.8011 2.75 14.6103 2.82902 14.4697 2.96967C14.329 3.11032 14.25 3.30109 14.25 3.5V4.75H9.75V3.5C9.75 3.30109 9.67098 3.11032 9.53033 2.96967C9.38968 2.82902 9.19891 2.75 9 2.75C8.80109 2.75 8.61032 2.82902 8.46967 2.96967C8.32902 3.11032 8.25 3.30109 8.25 3.5V4.75H7C6.27065 4.75 5.57118 5.03973 5.05546 5.55546C4.53973 6.07118 4.25 6.77065 4.25 7.5V18.5C4.25 19.2293 4.53973 19.9288 5.05546 20.4445C5.57118 20.9603 6.27065 21.25 7 21.25H17C17.7293 21.25 18.4288 20.9603 18.9445 20.4445C19.4603 19.9288 19.75 19.2293 19.75 18.5V7.5C19.75 6.77065 19.4603 6.07118 18.9445 5.55546C18.4288 5.03973 17.7293 4.75 17 4.75ZM7 6.25H8.25V7.5C8.25 7.69891 8.32902 7.88968 8.46967 8.03033C8.61032 8.17098 8.80109 8.25 9 8.25C9.19891 8.25 9.38968 8.17098 9.53033 8.03033C9.67098 7.88968 9.75 7.69891 9.75 7.5V6.25H14.25V7.5C14.25 7.69891 14.329 7.88968 14.4697 8.03033C14.6103 8.17098 14.8011 8.25 15 8.25C15.1989 8.25 15.3897 8.17098 15.5303 8.03033C15.671 7.88968 15.75 7.69891 15.75 7.5V6.25H17C17.3315 6.25 17.6495 6.3817 17.8839 6.61612C18.1183 6.85054 18.25 7.16848 18.25 7.5V10.25H5.75V7.5C5.75 7.16848 5.8817 6.85054 6.11612 6.61612C6.35054 6.3817 6.66848 6.25 7 6.25ZM17 19.75H7C6.66848 19.75 6.35054 19.6183 6.11612 19.3839C5.8817 19.1495 5.75 18.8315 5.75 18.5V11.75H18.25V18.5C18.25 18.8315 18.1183 19.1495 17.8839 19.3839C17.6495 19.6183 17.3315 19.75 17 19.75Z"
+          fill="white"
+        />
+        <path
+          d="M14 15.2998H10C9.80109 15.2998 9.61032 15.3788 9.46967 15.5195C9.32902 15.6601 9.25 15.8509 9.25 16.0498C9.25 16.2487 9.32902 16.4395 9.46967 16.5801C9.61032 16.7208 9.80109 16.7998 10 16.7998H14C14.1989 16.7998 14.3897 16.7208 14.5303 16.5801C14.671 16.4395 14.75 16.2487 14.75 16.0498C14.75 15.8509 14.671 15.6601 14.5303 15.5195C14.3897 15.3788 14.1989 15.2998 14 15.2998Z"
+          fill="white"
+        />
+      </svg>
+    </button>
   </div>
 </template>
 
 <style scoped lang="scss">
-.seller {
+.expert {
   width: 360px;
   height: 248px;
   background: #fff;
@@ -114,15 +171,17 @@ defineProps({
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-color: #f5f5f5;
 }
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  height: 44px;
+  gap: 4px;
 
   &__avatar {
-    width: 38px;
+    min-width: 38px;
     height: 38px;
     border-radius: 50%;
     overflow: hidden;
@@ -131,25 +190,48 @@ defineProps({
     justify-content: center;
 
     &__img {
-      width: auto;
-      height: 100%;
+      width: 38px;
+      height: 38px;
       object-fit: cover;
     }
   }
 
+  &__nameOnline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   &__name {
     font-family: "Roboto", sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
-    line-height: 25px;
+    line-height: 20px;
     color: #000;
+    overflow: hidden;
+    height: 22px;
+    width: 135px;
+    white-space: nowrap;
+  }
+
+  &__online {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 14px;
+    color: #999;
+    height: 14px;
+
+    &_off {
+      visibility: hidden;
+    }
   }
 
   &__price {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    flex-grow: 1;
+    // flex-grow: 1;
 
     &__price {
       font-family: "Roboto", sans-serif;
@@ -165,7 +247,17 @@ defineProps({
       font-weight: 300;
       line-height: 14px;
       color: #999999;
+      height: 14px;
+
+      &_off {
+        visibility: hidden;
+      }
     }
+  }
+
+  &__priceIcon {
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -242,7 +334,7 @@ defineProps({
       position: absolute;
       bottom: -24px;
 
-      &_last{
+      &_last {
         left: -58px;
       }
     }
@@ -268,6 +360,11 @@ defineProps({
   font-size: 16px;
   font-weight: 700;
   line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
 
   &:hover {
     background-color: #cc993c;

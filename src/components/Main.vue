@@ -257,13 +257,14 @@ const changeExpertsView = () => {
       font-weight: 400;
       line-height: 16px;
       color: #000;
-      border: 1px solid #dedede;
+      border: 2px solid #FFBF4B;
       border-radius: 6px;
-      background-color: #dedede;
+      background-color: #fff;
+      cursor: pointer;
     }
 
     &_button_noactive {
-      background: #fff;
+      border: 1px solid #DEDEDE;
     }
   }
 }

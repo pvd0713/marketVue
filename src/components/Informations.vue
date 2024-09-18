@@ -81,6 +81,10 @@ const articles = ref([
   },
 ]);
 
+defineProps({
+  view: Array,
+});
+
 // Visibility flags for sorting and filtering modals
 const showSorting = ref(false);
 const showFilters = ref(false);
@@ -253,7 +257,8 @@ const sortedFilteredArticles = computed(() => {
     </div>
 
     <!-- Articles Display -->
-    <div class="informations__articles">
+    <div :class="{ 'informations__articles_grid': view.indexOf('experts') === -1, 'informations__articles': view.indexOf('experts') !== -1 }">
+    <!-- <div  :class={{ view.indexOf('experts') === -1 ? 'informations__articles_grid' : 'informations__articles'}}> -->
       <div v-for="article in sortedFilteredArticles" :key="article.id">
         <Article :article="article" />
       </div>
@@ -345,10 +350,15 @@ const sortedFilteredArticles = computed(() => {
   max-width: 100%;
 
   &__articles {
-    display: grid; /* 1 */
-    grid-template-columns: repeat(auto-fill, 460px); /* 2 */
-    justify-content: center;
-    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 40px;
+  }
+
+  &__articles_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     row-gap: 20px;
     column-gap: 40px;
   }
