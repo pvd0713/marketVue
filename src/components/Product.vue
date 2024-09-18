@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 
 // Продуктовые данные
 const product = ref({
@@ -47,6 +47,18 @@ const nextImage = () => {
     selectedImage.value = product.value.images[currentIndex + 1];
   }
 };
+
+const props = defineProps({
+  view: Array,
+});
+
+const widthBlock = computed(() => {
+  if (props.view.indexOf("sallers") !== -1) {
+    return "100%";
+  } else {
+    return "46%";
+  }
+});
 </script>
 
 <template>
@@ -86,31 +98,33 @@ const nextImage = () => {
     </div>
 
     <!-- Слайдер миниатюр -->
-    <!-- <div class="thumbnail-slider">
-      <img
-        class="slider-btn left"
-        @click="previousImage"
-        src="../assets/img/ArrowLeft.svg"
-        alt="img"
-      />
-      <div class="thumbnails">
+    <div class="sliderBlock">
+      <div class="thumbnail-slider">
         <img
-          v-for="(image, index) in product.images"
-          :key="index"
-          :src="image"
-          :alt="'Image ' + (index + 1)"
-          :class="{ active: selectedImage === image }"
-          @click="selectImage(image)"
-          class="thumbnail"
+          class="slider-btn left"
+          @click="previousImage"
+          src="../assets/img/ArrowLeft.svg"
+          alt="img"
+        />
+        <div class="thumbnails">
+          <img
+            v-for="(image, index) in product.images"
+            :key="index"
+            :src="image"
+            :alt="'Image ' + (index + 1)"
+            :class="{ active: selectedImage === image }"
+            @click="selectImage(image)"
+            class="thumbnail"
+          />
+        </div>
+        <img
+          class="slider-btn right"
+          @click="nextImage"
+          src="../assets/img/ArrowRight.svg"
+          alt="img"
         />
       </div>
-      <img
-        class="slider-btn right"
-        @click="nextImage"
-        src="../assets/img/ArrowRight.svg"
-        alt="img"
-      />
-    </div> -->
+    </div>
 
     <!-- Таблица характеристик -->
     <h3>Характеристики</h3>
@@ -190,6 +204,9 @@ const nextImage = () => {
 }
 
 /* Слайдер миниатюр */
+.sliderBlock {
+  position: relative;
+}
 .thumbnail-slider {
   width: 100%;
   overflow-x: auto;
@@ -198,7 +215,6 @@ const nextImage = () => {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  position: relative;
 }
 
 .thumbnails {
@@ -209,7 +225,7 @@ const nextImage = () => {
 }
 
 .thumbnail-slider::-webkit-scrollbar {
-  height: 8px;
+  height: 10px;
 }
 .thumbnail-slider::-webkit-scrollbar-thumb {
   background-color: #ccc;
@@ -226,7 +242,7 @@ const nextImage = () => {
   margin-right: 10px;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: border-color 0.3s;
+  transition: border-color 0.2s;
 }
 
 .thumbnail:hover,
@@ -262,7 +278,8 @@ const nextImage = () => {
 .spec {
   display: flex;
   justify-content: space-between;
-  width: 46%;
+  width: v-bind(widthBlock);
+
   padding: 10px 0;
   box-sizing: border-box;
 }
@@ -276,10 +293,14 @@ const nextImage = () => {
   width: auto;
   flex-grow: 1;
   // border-bottom: 1.5px dotted #999;
-  background-image: linear-gradient(to right, #999 33%, rgba(255,255,255,0) 0%);
-background-position: bottom;
-background-size: 5px 1.5px;
-background-repeat: repeat-x;
+  background-image: linear-gradient(
+    to right,
+    #999 33%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-position: bottom;
+  background-size: 5px 1.5px;
+  background-repeat: repeat-x;
 }
 
 .value {

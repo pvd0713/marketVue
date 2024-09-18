@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import Article from "./InformationsArticle.vue";
 
 // Array of articles (data)
@@ -81,7 +81,7 @@ const articles = ref([
   },
 ]);
 
-defineProps({
+const props = defineProps({
   view: Array,
 });
 
@@ -183,6 +183,17 @@ const sortedFilteredArticles = computed(() => {
     );
   });
 });
+
+// const viewShow = ref(["information", "experts"]);
+
+// watch(
+//   () => props.view,
+//   () => {
+//     setTimeout(() => {
+//       viewShow.value = props.view;
+//     }, 100);
+//   }
+// );
 </script>
 
 <template>
@@ -255,10 +266,13 @@ const sortedFilteredArticles = computed(() => {
         </div>
       </div>
     </div>
-
     <!-- Articles Display -->
-    <div :class="{ 'informations__articles_grid': view.indexOf('experts') === -1, 'informations__articles': view.indexOf('experts') !== -1 }">
-    <!-- <div  :class={{ view.indexOf('experts') === -1 ? 'informations__articles_grid' : 'informations__articles'}}> -->
+    <div
+      :class="{
+        informations__articles_grid: view.indexOf('experts') === -1,
+        informations__articles: view.indexOf('experts') !== -1,
+      }"
+    >
       <div v-for="article in sortedFilteredArticles" :key="article.id">
         <Article :article="article" />
       </div>
@@ -356,7 +370,7 @@ const sortedFilteredArticles = computed(() => {
     column-gap: 40px;
   }
 
-  &__articles_grid{
+  &__articles_grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 20px;

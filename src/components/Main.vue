@@ -157,7 +157,7 @@ const changeExpertsView = () => {
 
 .header {
   width: 100%;
-  background: #FFBF4B4D;
+  background: #ffbf4b4d;
   border-radius: 8px;
   margin: 0;
   display: flex;
@@ -214,8 +214,8 @@ const changeExpertsView = () => {
     line-height: 16px;
     margin: 0;
     color: #fff;
-    background-color: #FFBF4B;
-    border: 1px solid #FFBF4B;
+    background-color: #ffbf4b;
+    border: 1px solid #ffbf4b;
     border-radius: 4px;
     padding: 5px 10px 5px 10px;
     cursor: pointer;
@@ -257,14 +257,14 @@ const changeExpertsView = () => {
       font-weight: 400;
       line-height: 16px;
       color: #000;
-      border: 2px solid #FFBF4B;
+      border: 2px solid #ffbf4b;
       border-radius: 6px;
       background-color: #fff;
       cursor: pointer;
     }
 
     &_button_noactive {
-      border: 1px solid #DEDEDE;
+      border: 1px solid #dedede;
     }
   }
 }
